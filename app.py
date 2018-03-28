@@ -29,20 +29,30 @@ def index():
     Display routes
     :return Response:
     """
-    res = {'routes': {
-        '/random': {
-            'endpoint': url_for('get_random', _external=True),
-            'description': 'Random tekosyy'
+    res = {
+        'routes': {
+            '/random': {
+                'endpoint': url_for('get_random', _external=True),
+                'description': 'Random tekosyy'
+            },
+            '/list': {
+                'endpoint': url_for('list_all', _external=True),
+                'description': 'Kaikki tekosyyt'
+            },
+            '/search': {
+                'endpoint': url_for('filtered_list', query='markkinointi', _external=True),
+                'description': 'Filtteröi hakusanalla'
+            }
         },
-        '/list': {
-            'endpoint': url_for('list_all', _external=True),
-            'description': 'Kaikki tekosyyt'
+        'original_idea_by': {
+            'name': 'Ville Säävuori',
+            'twitter': '@uninen'
         },
-        '/search': {
-            'endpoint': url_for('filtered_list', query='markkinointi', _external=True),
-            'description': 'Filtteröi hakusanalla'
+        'rest_functionality_by': {
+            'name': 'Ville R.',
+            'twitter': '@villeristi'
         }
-    }}
+    }
     return response_with(res)
 
 
